@@ -23,10 +23,9 @@ function App() {
           setQuery('');
           console.log(result);
         });
-         fetch ('https://saurav.tech/NewsAPI/top-headlines/category/health/in.json').then(news => news.json()).then(todayNews => {if(todayNews.status == 'OK'){setNews(todayNews);
-            console.log(todayNews)} return (
-               console.log('somthing error'))
-              });
+         fetch ('https://saurav.tech/NewsAPI/top-headlines/category/health/in.json').then(news => news.json()).then(todayNews => {setNews(todayNews);
+            console.log(todayNews)} 
+              );
             
             
         
@@ -77,10 +76,21 @@ function App() {
           </div>
         </div>
         ) : ('')}
+        
+        {(typeof News.articles != "undefined") ? (
+          <div className="NewsBox" >
+       <div className='img-box'> <img src={News.articles[2].urlToImage}/> </div>
+          <h3>  {News.articles[2].title}</h3> 
+          <h4> Source :  {News.articles[2].author}</h4>
+            
+        
+            </div>
+
+        ) : ('')}
+        
       </main>
-
-
       
+
     </div>
   );
 }
